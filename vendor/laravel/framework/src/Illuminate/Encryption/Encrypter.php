@@ -39,6 +39,8 @@ class Encrypter implements EncrypterContract
             $this->key = $key;
             $this->cipher = $cipher;
         } else {
+            var_dump($key);exit;
+
             throw new RuntimeException('The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths.');
         }
     }
@@ -53,7 +55,6 @@ class Encrypter implements EncrypterContract
     public static function supported($key, $cipher)
     {
         $length = mb_strlen($key, '8bit');
-        var_dump($length);exit;
 
         return ($cipher === 'AES-128-CBC' && $length === 16) ||
                ($cipher === 'AES-256-CBC' && $length === 32);
