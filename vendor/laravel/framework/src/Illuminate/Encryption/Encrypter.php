@@ -35,7 +35,6 @@ class Encrypter implements EncrypterContract
     public function __construct($key, $cipher = 'AES-128-CBC')
     {
         $key = (string) $key;
-        var_dump($key);exit;
         if (static::supported($key, $cipher)) {
             $this->key = $key;
             $this->cipher = $cipher;
@@ -54,6 +53,7 @@ class Encrypter implements EncrypterContract
     public static function supported($key, $cipher)
     {
         $length = mb_strlen($key, '8bit');
+        var_dump($length);exit;
 
         return ($cipher === 'AES-128-CBC' && $length === 16) ||
                ($cipher === 'AES-256-CBC' && $length === 32);
